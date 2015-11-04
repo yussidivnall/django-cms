@@ -420,6 +420,27 @@ You need at least the following :setting:`django:TEMPLATE_CONTEXT_PROCESSORS`::
         'cms.context_processors.cms_settings',
     )
 
+On Django >= 1.8 this is placed insite TEMPLATES=[] and might look something like this::
+
+    TEMPLATES = [
+        {   
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [ os.path.join(BASE_DIR, "templates"),  ],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                    'sekizai.context_processors.sekizai',
+                ],
+            },
+        },
+    ]
+
+
+
 .. note::
 
     This setting will be missing from automatically generated Django settings
